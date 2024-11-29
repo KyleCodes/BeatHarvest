@@ -1,0 +1,12 @@
+version: "3"
+services:
+  music-downloader:
+    build: .
+    ports:
+      - "2222:22" # Map container's SSH port to host port 2222
+    volumes:
+      - ./downloads:/downloads # Mount downloads directory
+      # - ./config:/config # Mount config directory if needed
+    environment:
+      - TZ=UTC # Set your timezone
+    restart: unless-stopped
