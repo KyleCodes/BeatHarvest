@@ -3,7 +3,7 @@ FROM debian:bullseye-slim
 
 # Set environment variables
 ENV NODE_VERSION=20.x
-ENV PYTHON_VERSION=3.11
+ENV PYTHON_VERSION=3.9
 
 # Install essential system dependencies
 RUN apt-get update && apt-get install -y \
@@ -33,7 +33,7 @@ RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 WORKDIR /app
 
 # Now clone your repository (replace with your actual repo URL)
-RUN git clone git@github.com:KyleCodes/BeatHarvest.git ./BeatHarvest
+RUN git clone https://github.com/KyleCodes/BeatHarvest.git ./BeatHarvest
 
 # Change to repository directory
 WORKDIR /app/BeatHarvest
