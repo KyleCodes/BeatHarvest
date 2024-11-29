@@ -37,7 +37,7 @@ async function main(): Promise<void> {
 }
 
 async function downloadPlaylists(playlists: Playlist<TrackItem>[]): Promise<void> {
-  const baseDir = path.join(os.homedir(), "Music", "spotdl")
+  const baseDir = "/downloads"
   await fs.mkdir(baseDir, {recursive: true})
 
   for (const playlist of playlists) {
