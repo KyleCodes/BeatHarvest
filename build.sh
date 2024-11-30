@@ -37,7 +37,7 @@ echo "Waiting for container to start..."
 sleep 5
 
 # Get container ID
-CONTAINER_ID=$(docker ps -qf "name=backend-music-downloader-1")
+CONTAINER_ID=$(docker ps -qf "name=backend-music-downloader")
 
 if [ -z "$CONTAINER_ID" ]; then
   echo -e "${RED}Error: Container not found${NC}"
