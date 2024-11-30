@@ -62,4 +62,6 @@ EXPOSE 22
 RUN echo "*/2 * * * * cd /app/BeatHarvest && /usr/bin/node -r ts-node/register src/scripts/downloadPlaylists.ts >> /var/log/cron.log 2>&1" | crontab -
 
 # Start both cron and SSH services
-CMD service cron start && /usr/sbin/sshd -D
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+ENTRYPOINT ["/start.sh"]
