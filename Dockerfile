@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
   python3-pip \
   openssh-server \
   openssh-client \
+  cron \
   && rm -rf /var/lib/apt/lists/*
 
 # Install Node.js
@@ -57,5 +58,8 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 # Expose SSH port
 EXPOSE 22
 
-# Start SSH daemon
-CMD ["/usr/sbin/sshd", "-D"]
+# Set up cron job
+RUN echo "*/2 * * * * cd /app/BeatHarvest && /usr/bin/node -r ts-node/register src/scripts/downloadPlaylists.ts >> /var/log/cron.log 2>&1" | crontab -
+
+# Start both cron and SSH services
+CMD service cron start && /usr/sbin/sshd -D
