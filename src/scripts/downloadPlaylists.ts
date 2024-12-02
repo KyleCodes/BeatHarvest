@@ -47,7 +47,7 @@ async function downloadPlaylists(playlists: Playlist<TrackItem>[]): Promise<void
 
       console.log(`Downloading playlist "${playlist.name}" to ${playlistDir}`)
 
-      const spotdl = spawn("spotdl", [playlist.external_urls.spotify], {
+      const spotdl = spawn("/usr/local/bin/spotdl", [playlist.external_urls.spotify], {
         cwd: playlistDir,
         stdio: ["inherit", "pipe", "pipe"],
       })

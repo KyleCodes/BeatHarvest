@@ -1,0 +1,9 @@
+- remove ssh dir + logic if no longer needed
+- include playlists that have xdj in the playlist description
+
+[WEB UI]
+- explicitly list all of user's playlists
+  - allow user to specify which playlists they would like to add to download list
+  - either local file stores this, or we mutate the playlist description to contain "xdj"
+      - local file likely better for this. 
+
