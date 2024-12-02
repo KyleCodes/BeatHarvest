@@ -38,6 +38,7 @@ sleep 5
 
 # Get container ID
 CONTAINER_ID=$(docker ps -qf "name=backend-music-downloader-1")
+echo "Container ID: ${CONTAINER_ID}"
 
 if [ -z "$CONTAINER_ID" ]; then
   echo -e "${RED}Error: Container not found${NC}"
