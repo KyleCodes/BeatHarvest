@@ -50,7 +50,7 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 EXPOSE 22
 
 # Set up cron job
-RUN echo "*0 * * * * cd /app/BeatHarvest && /usr/bin/node -r ts-node/register src/scripts/downloadPlaylists.ts >> /var/log/cron.log 2>&1" | crontab -
+RUN echo "0 * * * * cd /app/BeatHarvest && /usr/bin/node -r ts-node/register src/scripts/downloadPlaylists.ts >> /var/log/cron.log 2>&1" | crontab -
 
 # Start both cron and SSH services
 COPY start.sh /start.sh
