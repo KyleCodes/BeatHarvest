@@ -13,7 +13,6 @@ RUN apt-get update && apt-get install -y \
   python${PYTHON_VERSION} \
   python3-pip \
   openssh-server \
-  openssh-client \
   cron \
   && rm -rf /var/lib/apt/lists/*
 
@@ -21,14 +20,6 @@ RUN apt-get update && apt-get install -y \
 RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION} | bash - \
   && apt-get install -y nodejs \
   && npm install -g typescript ts-node
-
-# Setup SSH for git
-RUN mkdir -p /root/.ssh
-# We'll copy your SSH key during build
-COPY .ssh/id_rsa /root/.ssh/id_rsa
-RUN chmod 600 /root/.ssh/id_rsa
-# Add Github to known hosts
-RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 
 # Set working directory
 WORKDIR /app
