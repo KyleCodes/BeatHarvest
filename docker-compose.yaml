@@ -1,12 +1,10 @@
-version: "4"
+version: "5"
 services:
   music-downloader:
     build: .
-    ports:
-      - "2222:22" # Map container's SSH port to host port 2222
     volumes:
-      - ~/Music/spotdl:/downloads # Mount downloads directory
-      # - ./config:/config # Mount config directory if needed
+      - ~/Music/BeatHarvest:/downloads
+      # - ~/Developer/BeatHarvest/backend/.env:/app/BeatHarvest/.env
     environment:
       - TZ=UTC # Set your timezone
     restart: unless-stopped

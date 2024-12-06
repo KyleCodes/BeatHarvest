@@ -1,4 +1,3 @@
-- remove ssh dir + logic if no longer needed
 - include playlists that have xdj in the playlist description
 
 [WEB UI]

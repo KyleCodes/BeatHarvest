@@ -1,4 +1,5 @@
 #!/bin/bash
 
 service cron start
-/usr/sbin/sshd -D
+# Keep container running by preventing script from exiting
+tail -f /var/log/cron.log

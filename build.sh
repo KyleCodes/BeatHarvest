@@ -57,16 +57,9 @@ else
   docker exec $CONTAINER_ID git clone https://github.com/KyleCodes/BeatHarvest.git /app/BeatHarvest
 fi
 
-# Copy .env file to container
-echo "Copying .env file to container..."
-docker cp .env "${CONTAINER_ID}:/app/BeatHarvest/.env"
-
 if [ $? -eq 0 ]; then
-  echo -e "${GREEN}✓ .env file copied successfully${NC}"
   echo -e "${GREEN}Build process complete!${NC}"
-  echo "You can now connect to the container using: ssh root@localhost -p 2222"
-  echo "Password: BeatHarvest"
 else
-  echo -e "${RED}Error: Failed to copy .env file${NC}"
+  echo -e "${RED}Error: Build failed"
   exit 1
 fi
